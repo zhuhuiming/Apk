@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" extends="struts-default">
+		<!-- 在这里添加Action定义 -->
+
+		<!-- 简单文件下载 -->
+		<action name="download" class="cn.redarmy.action.FileDownloadAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">inputStream</param>
+				<param name="buffserSize">4096</param>
+				<param name="contentLength">${fileSize}</param>
+			</result>
+		</action>
+	</package>
+</struts>
